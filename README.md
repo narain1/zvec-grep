@@ -79,6 +79,25 @@ zg index --embedding local/potion-retrieval-32m
 > [!NOTE]
 > The index is stored in `.zvec-grep/` under the indexed project root.
 
+### Python library (pip wheel)
+
+Install the Python wrapper package:
+
+```bash
+pip install zvec-grep
+```
+
+Then use it in Python to run the same `zg` workflows:
+
+```python
+from zvec_grep import ZvecGrep
+
+zg = ZvecGrep()
+zg.index(root=".", embedding="local/potion-retrieval-32m")
+result = zg.query("An unseen creature left a few marks.", root=".", human=True, limit=3)
+print(result.stdout)
+```
+
 ### 2. Choose how to search
 
 #### For agents: ask with OpenCode
